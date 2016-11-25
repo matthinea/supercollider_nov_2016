@@ -9,3 +9,52 @@
 )
 
 ~wind = Synth(\wind, [\mul, 0.7]);
+
+
+(
+  // decrease & print wind volume with each call to "next"
+  r = Routine({
+    ~wind = Synth(\wind, [\mul, 0.7]);
+    nil.yield;
+    ~wind.set(\mul, 0.65);
+    ~wind.get(\mul, {arg m; m.postln; })
+    nil.yield;
+    ~wind.set(\mul, 0.6);
+    ~wind.get(\mul, {arg m; m.postln; })
+    nil.yield;
+    ~wind.set(\mul, 0.55);
+    ~wind.get(\mul, {arg m; m.postln; })
+    nil.yield;
+    ~wind.set(\mul, 0.5);
+    ~wind.get(\mul, {arg m; m.postln; })
+    nil.yield;
+    ~wind.set(\mul, 0.45);
+    ~wind.get(\mul, {arg m; m.postln; })
+    nil.yield;
+    ~wind.set(\mul, 0.4);
+    ~wind.get(\mul, {arg m; m.postln; })
+    nil.yield;
+    ~wind.set(\mul, 0.35);
+    ~wind.get(\mul, {arg m; m.postln; })
+    nil.yield;
+    ~wind.set(\mul, 0.3);
+    ~wind.get(\mul, {arg m; m.postln; })
+    nil.yield;
+    ~wind.set(\mul, 0.25);
+    ~wind.get(\mul, {arg m; m.postln; })
+    nil.yield;
+    ~wind.set(\mul, 0.2);
+    ~wind.get(\mul, {arg m; m.postln; })
+    nil.yield;
+    ~wind.set(\mul, 0.15);
+    ~wind.get(\mul, {arg m; m.postln; })
+    nil.yield;
+    ~wind.set(\mul, 0.1);
+    ~wind.get(\mul, {arg m; m.postln; })
+  })
+)
+r.next;
+~wind.get(\mul, {arg m; m.postln; })
+
+
+~wind.set(\mul, 0.2)
