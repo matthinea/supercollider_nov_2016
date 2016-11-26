@@ -1,4 +1,3 @@
-s.boot;
 
 (
 ~bellsAmp = Bus.control(s, 1);
@@ -15,7 +14,7 @@ Slider(w, Rect(20, 60, 30, 380)).background_(Color.rand)
 .action_({
 	arg arg1;
 	var newAmp;
-	newAmp = arg1.value.linlin(0,1,0,1).postln;
+	newAmp = arg1.value.linlin(0,1,0,1.5).postln;
 	~bellsAmp.set(newAmp);
 });
 StaticText(w, Rect(80, 20, 150, 30)).string_("Dust Bandwidth");
@@ -23,7 +22,7 @@ Slider(w, Rect(80, 60, 30, 380)).background_(Color.rand)
 .value_(0.0001)
 .action_({
 	arg newVal;
-	var scaledVal = newVal.value.linlin(0,1,0.0001, 0.0009);
+	var scaledVal = newVal.value.linlin(0,1,0.0001, 0.002);
   scaledVal.postln;
 	~dustRatio.set(scaledVal);
 });

@@ -1,3 +1,5 @@
+s.boot;
+
 (
   ~score = Routine({
     "start wind".postln;
@@ -16,6 +18,10 @@
     ~bells = Synth(\bells);
     nil.yield;
 
+    "release dust 1".postln;
+    ~dustRoutine.next;
+    nil.yield;
+
     "change bell and dust chord".postln;
     ~dustRoutine.next;
     ~bells.free;
@@ -30,4 +36,3 @@
   )
 
 ~score.next;
-s.quit;

@@ -1,5 +1,3 @@
-s.boot;
-
 (
   SynthDef(\wind, {
     arg freq = 380, mul = 1, outBus = 0;
@@ -17,7 +15,7 @@ s.boot;
     ~wind.get(\mul, {arg m; m.postln; });
     nil.yield;
     ~wind.set(\mul, 0.65);
-    ~wind.get(\mul, {arg m; m.postln; });
+    /*~wind.get(\mul, {arg m; m.postln; });*/
     nil.yield;
     ~wind.set(\mul, 0.6);
     ~wind.get(\mul, {arg m; m.postln; });
@@ -54,7 +52,7 @@ s.boot;
     nil.yield;
     ~wind.set(\mul, 0.05);
     ~wind.get(\mul, {arg m; m.postln; });
-    "final yield before release".postln;
+    "WARNING: last 'next' before release".postln;
     nil.yield;
     ~wind.free;
   })

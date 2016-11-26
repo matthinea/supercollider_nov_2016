@@ -1,4 +1,3 @@
-
 (
   SynthDef(\dust, {
     arg freq = 220, rate, amp = 0.1, gate, ratioBus;
@@ -41,6 +40,11 @@
   nil.yield;
 
   // 3
+  x.release;
+  y.release;
+  nil.yield;
+
+  // 4
 	x = Synth(\dust, [
       freq: 44.midicps,
       rate: 5,
@@ -51,6 +55,7 @@
   x.get(\freq, {arg f; f.postln});
 	nil.yield;
 
+  // 5
   y = Synth(\dust, [
     freq: 56.midicps,
     rate: 5,
@@ -61,6 +66,7 @@
   y.get(\freq, {arg f; f.postln});
   nil.yield;
 
+  // 6
   "releasing".postln;
 	x.release;
   y.release;

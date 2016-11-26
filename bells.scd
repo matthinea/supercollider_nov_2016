@@ -1,18 +1,18 @@
-
 ~scale = [48, 60, 62, 64, 67, 69] - 4;
 
 (
  SynthDef(\bells, {
-	arg outBus = 0;
+	arg outBus = 0, gate = 1;
 
 	var specs, freqs, amps, rings, pan, out, env, scale,
-  numRes, numBells, mul;
+  numRes, numBells, mul, rel;
 
   mul = In.kr(~bellsAmp);
 	numRes = 5;
   numBells = 20;
   scale = ~scale;
-	env = EnvGen.kr(Env.new([0, 1], [9]));
+  rel = 8;
+	env = EnvGen.kr(Env.asr(releaseTime: rel), gate);
 
 	out = Mix.fill(numBells, {
 		freqs = Array.fill(numRes, {rrand(1, 3)*(scale.choose.midicps)});
@@ -33,16 +33,17 @@
 
 ( // same as 'bells' synth, but lower chord
  SynthDef(\bells_2, {
-	arg outBus = 0;
+	arg outBus = 0, gate = 1;
 
 	var specs, freqs, amps, rings, pan, out, env, scale,
-  numRes, numBells, mul;
+  numRes, numBells, mul, rel;
 
   mul = In.kr(~bellsAmp);
 	numRes = 5;
   numBells = 20;
   scale = ~scale - 4;
-	env = EnvGen.kr(Env.new([0, 1], [9]));
+  rel = 8;
+	env = EnvGen.kr(Env.asr(releaseTime: rel), gate);
 
 	out = Mix.fill(numBells, {
 		freqs = Array.fill(numRes, {rrand(1, 3)*(scale.choose.midicps)});
@@ -60,3 +61,12 @@
 	Out.ar(outBus, out * mul);
 	}).add
 )
+
+
+(
+  ~bellsRoutine = Routine({
+    a = Synth(\bells);
+    nil.yield;
+
+    })
+  )
