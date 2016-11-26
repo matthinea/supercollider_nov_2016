@@ -1,5 +1,5 @@
 
-~scale = [48, 60, 62, 64, 67, 69];
+~scale = [48, 60, 62, 64, 67, 69] - 4;
 
 (
  SynthDef(\bells, {
@@ -31,7 +31,7 @@
 	}).add
 )
 
-( // same as 'bells' synth but lower scale
+( // same as 'bells' synth, but lower chord
  SynthDef(\bells_2, {
 	arg outBus = 0;
 

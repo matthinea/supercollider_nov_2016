@@ -8,7 +8,7 @@
     ~dustRoutine.next;
     nil.yield;
 
-    "change dust pitch".postln;
+    "next dust pitch".postln;
     ~dustRoutine.next;
     nil.yield;
 

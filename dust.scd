@@ -17,8 +17,8 @@
 
 (
 ~dustRoutine = Routine({
-  // 1
 
+  // 1
 	x = Synth(\dust, [
       freq: 48.midicps,
       rate: 5,
@@ -29,11 +29,7 @@
   x.get(\freq, {arg f; f.postln});
 	nil.yield; // hold indefinitely
 
-	// 2
-  "releasing".postln;
-  x.release;
-  nil.yield;
-
+  // 2
   y = Synth(\dust, [
     freq: 60.midicps,
     rate: 5,
@@ -44,10 +40,7 @@
   y.get(\freq, {arg f; f.postln});
   nil.yield;
 
-  y.release;
-  "releasing".postln;
-  nil.yield;
-
+  // 3
 	x = Synth(\dust, [
       freq: 44.midicps,
       rate: 5,
@@ -57,11 +50,6 @@
       ]);
   x.get(\freq, {arg f; f.postln});
 	nil.yield;
-
-
-  "releasing".postln;
-	x.release;
-  nil.yield;
 
   y = Synth(\dust, [
     freq: 56.midicps,
@@ -74,6 +62,7 @@
   nil.yield;
 
   "releasing".postln;
+	x.release;
   y.release;
   nil.yield;
 });
